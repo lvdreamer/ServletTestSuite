@@ -1,0 +1,15 @@
+java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/sampleReq?name=bob
+
+java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/sampleReq  "application/xml" "<xml>name</xml>"
+java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/sampleReq  "application/json" "{\"name\":\"bob\"}"
+java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/sampleReq  "application/x-www-form-urlencoded" "name=bob"
+
+java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/fileUpload "multipart/form-data" filepath
+java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/fileDown
+
+
+curl http://127.0.0.1:8080/ServletTestSuite/sampleReq?name=bob
+curl -d "user=nickwolfe&password=12345"  http://127.0.0.1:8080/ServletTestSuite/sampleReq?name=bob
+curl -H 'content-type: application/xml' -X POST -d '<xml><name>bob</name><xml>' http://127.0.0.1:8080/ServletTestSuite/sampleReq
+curl -H 'content-type: application/json' -X POST -d '{"name":"bob"}'  
+curl -F "file=@cooltext.txt" -F "name=bob" 
