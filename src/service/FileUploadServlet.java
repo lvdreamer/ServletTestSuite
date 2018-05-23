@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.Enumeration;
 
@@ -47,7 +48,7 @@ public class FileUploadServlet extends HttpServlet {
 		while (e.hasMoreElements()) {
 			String key = e.nextElement();
 			String value = req.getHeader(key);
-			System.out.println(key + ":" + value);
+			System.out.println(LocalTime.now()+"===>"+key + ":" + value);
 		}
 		try {
 			// 获取上传的文件
@@ -56,7 +57,7 @@ public class FileUploadServlet extends HttpServlet {
 
 				// 获取请求的信息
 				String name = part.getHeader("content-disposition");
-				System.out.println("fileName:" + name);
+				System.out.println(LocalTime.now()+"===>"+"fileName:" + name);
 				InputStream is = part.getInputStream();
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				byte[] buffer = new byte[1024];
@@ -73,8 +74,8 @@ public class FileUploadServlet extends HttpServlet {
 				SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 				String now = sdf.format(date);
 				out.println(now + "==>请求成功");
-				out.println("content-disposition:" + name);
-				out.println("fileSize:" + dataByte.length / 1000 + "kb");
+				out.println(LocalTime.now()+"===>"+"content-disposition:" + name);
+				out.println(LocalTime.now()+"===>"+"fileSize:" + dataByte.length / 1000 + "kb");
 				out.flush();
 				out.close();
 			} else {
@@ -88,7 +89,11 @@ public class FileUploadServlet extends HttpServlet {
 				out.close();
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			// 获取输出流
+			PrintWriter out = resp.getWriter();
+			out.println(LocalTime.now()+"===>"+ex.getMessage());
+			out.flush();
+			out.close();
 		}
 
 	}

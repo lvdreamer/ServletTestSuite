@@ -114,7 +114,7 @@ public class HttpClient {
 
 		URLConnection connection = this.openConnection(localURL);
 		HttpURLConnection httpURLConnection = (HttpURLConnection) connection;
-
+		System.err.println("timeOUt"+httpURLConnection.getConnectTimeout());
 		httpURLConnection.setDoOutput(true);
 		httpURLConnection.setRequestMethod("POST");
 		httpURLConnection.setRequestProperty("Accept-Charset", charset);

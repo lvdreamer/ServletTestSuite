@@ -1,10 +1,15 @@
+javac  -cp servlet-api.jar -encoding utf-8 -d . SampleServlet.java
+javac  -cp servlet-api.jar -encoding utf-8 -d . FileUploadServlet.java
+javac  -cp servlet-api.jar -encoding utf-8 -d . FileDownServlet.java
+javac  -cp servlet-api.jar -encoding utf-8 -d . HttpClinet.java
+
 java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/sampleReq?name=bob
 
 java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/sampleReq  "application/xml" "<xml>name</xml>"
 java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/sampleReq  "application/json" "{\"name\":\"bob\"}"
 java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/sampleReq  "application/x-www-form-urlencoded" "name=bob"
 
-java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/fileUpload "multipart/form-data" filepath
+java client.HttpClient  http://172.29.15.4:8085/ServletTestSuite/fileUpload "multipart/form-data" filepath
 java client.HttpClient  http://127.0.0.1:8080/ServletTestSuite/fileDown
 
 
@@ -12,4 +17,4 @@ curl http://127.0.0.1:8080/ServletTestSuite/sampleReq?name=bob
 curl -d "user=nickwolfe&password=12345"  http://127.0.0.1:8080/ServletTestSuite/sampleReq?name=bob
 curl -H 'content-type: application/xml' -X POST -d '<xml><name>bob</name><xml>' http://127.0.0.1:8080/ServletTestSuite/sampleReq
 curl -H 'content-type: application/json' -X POST -d '{"name":"bob"}'  
-curl -F "file=@cooltext.txt" -F "name=bob" 
+curl -F "file=@/root/soft/apache-tomcat-8.0.41.tar.gz" http://172.29.14.4:8085/ServletTestSuite/fileUpload
