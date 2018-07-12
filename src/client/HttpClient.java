@@ -285,6 +285,7 @@ public class HttpClient {
 
 		} catch (Exception e) {
 			System.out.println("上传失败" + e);
+
 		}
 		return null;
 	}
