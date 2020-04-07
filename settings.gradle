@@ -1,4 +1,5 @@
 rootProject.name = 'code-notes'
 include "servlet-http-test"
 include 'showtime-starter'
+include 'rabbitmq'
 
