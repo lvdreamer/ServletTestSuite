@@ -27,8 +27,6 @@ public class RabbitConfig {
     public static final String TOPIC_QUEUE_TWO = "lvdreamer.queue.topic2";
 
 
-
-
     @Bean
     public Queue simpleQueue() {
         return new Queue(SIMPLE_QUEUE);
@@ -87,9 +85,11 @@ public class RabbitConfig {
         simpleRabbitListenerContainerFactory.setConnectionFactory(connectionFactory);
 
         // 设置消费者线程数
-        simpleRabbitListenerContainerFactory.setConcurrentConsumers(5);
+        simpleRabbitListenerContainerFactory.setConcurrentConsumers(1);
         // 设置最大消费者线程数
         simpleRabbitListenerContainerFactory.setMaxConcurrentConsumers(10);
+        //#在单个请求中处理的消息个数，他应该大于等于事务数量(unack的最大数量),可以限流
+        // simpleRabbitListenerContainerFactory.setPrefetchCount(2);
         simpleRabbitListenerContainerFactory.setAcknowledgeMode(AcknowledgeMode.MANUAL);
         return simpleRabbitListenerContainerFactory;
     }

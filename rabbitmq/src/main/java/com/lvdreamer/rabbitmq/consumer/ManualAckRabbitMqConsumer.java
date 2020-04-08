@@ -23,7 +23,7 @@ public class ManualAckRabbitMqConsumer {
                     ignoreDeclarationExceptions = "true")))
     public void receive(String data, Message message, Channel channel) {
         logger.info("Consumer[1] receive data  : {}", data);
-        logger.info("Consumer[1] message data  : {}", message);
+        logger.debug("Consumer[1] message data  : {}", message);
         try {
             //休眠3秒钟观察状态
             Thread.sleep(3000L);

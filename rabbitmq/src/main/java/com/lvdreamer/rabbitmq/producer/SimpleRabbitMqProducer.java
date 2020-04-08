@@ -1,7 +1,6 @@
 package com.lvdreamer.rabbitmq.producer;
 
 import com.lvdreamer.rabbitmq.RabbitConfig;
-import com.lvdreamer.rabbitmq.consumer.SimpleRabbitMqConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -36,6 +35,6 @@ public abstract class SimpleRabbitMqProducer {
         rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
             logger.info("消息被退回:message({}),replyCode({}),replyText({}),exchange({}),routingKey({})", message, replyCode, replyText, exchange, routingKey);
         });
-        rabbitTemplate.convertAndSend(RabbitConfig.MANUALACK_EXCHANGE, "", LocalTime.now());
+        rabbitTemplate.convertAndSend(RabbitConfig.MANUALACK_EXCHANGE, "", LocalTime.now().toString());
     }
 }

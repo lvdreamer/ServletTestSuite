@@ -23,7 +23,7 @@ public class TopicRabbitMqConsumer {
                     ignoreDeclarationExceptions = "true", type = ExchangeTypes.TOPIC), key = "*.one"))
     public void receive(String data, Message message, Channel channel) {
         logger.info("Consumer[1] receive data  : {}", data);
-        logger.info("Consumer[1] message data  : {}", message);
+        logger.debug("Consumer[1] message data  : {}", message);
         try {
             //休眠3秒钟观察状态
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
@@ -40,7 +40,7 @@ public class TopicRabbitMqConsumer {
                     ignoreDeclarationExceptions = "true", type = ExchangeTypes.TOPIC), key = "*.one"))
     public void receive2(String data, Message message, Channel channel) {
         logger.info("Consumer[2] receive data  : {}", data);
-        logger.info("Consumer[2] message data  : {}", message);
+        logger.debug("Consumer[2] message data  : {}", message);
         try {
             //休眠3秒钟观察状态
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
@@ -57,7 +57,7 @@ public class TopicRabbitMqConsumer {
                     ignoreDeclarationExceptions = "true", type = ExchangeTypes.TOPIC), key = "*.one"))
     public void receive3(String data, Message message, Channel channel) {
         logger.info("Consumer[3] receive data  : {}", data);
-        logger.info("Consumer[3] message data  : {}", message);
+        logger.debug("Consumer[3] message data  : {}", message);
         try {
             //休眠3秒钟观察状态
             channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
