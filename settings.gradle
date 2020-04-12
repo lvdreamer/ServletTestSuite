@@ -3,4 +3,5 @@ include "servlet-http-test"
 include 'showtime-starter'
 include 'rabbitmq'
 include 'redis'
+include 'basic'
 
