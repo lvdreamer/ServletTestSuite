@@ -4,4 +4,5 @@ include 'showtime-starter'
 include 'rabbitmq'
 include 'redis'
 include 'basic'
+include 'netty'
 
