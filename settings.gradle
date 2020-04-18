@@ -5,4 +5,5 @@ include 'rabbitmq'
 include 'redis'
 include 'basic'
 include 'netty'
+include 'algorithm'
 
