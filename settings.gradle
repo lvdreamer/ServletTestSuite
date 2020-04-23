@@ -6,4 +6,5 @@ include 'redis'
 include 'basic'
 include 'netty'
 include 'algorithm'
+include 'docker'
 
