@@ -7,4 +7,5 @@ include 'basic'
 include 'netty'
 include 'algorithm'
 include 'docker'
+include 'design-pattern'
 
