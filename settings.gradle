@@ -1,0 +1,11 @@
+rootProject.name = 'code-notes'
+include "servlet-http-test"
+include 'showtime-starter'
+include 'rabbitmq'
+include 'redis'
+include 'basic'
+include 'netty'
+include 'algorithm'
+include 'docker'
+include 'design-pattern'
+

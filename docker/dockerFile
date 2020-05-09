@@ -1,0 +1,4 @@
+FROM 99taxis/mini-java8
+ADD build/libs/*.jar idea-docker-deploy.jar
+EXPOSE 8088
+ENTRYPOINT ["java", "-jar", "idea-docker-deploy.jar"]
