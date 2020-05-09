@@ -3,7 +3,26 @@ package com.lvdreamer.algorithm;
 import java.io.IOException;
 import java.util.Stack;
 
-public class TwoLinkValueAdd {
+/**
+ * 2. 两数相加
+ * 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
+ * 如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。
+ * 您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/add-two-numbers
+ * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ */
+public class Question0002 {
+
+    public static void main(String[] args) throws IOException {
+        Question0002 question0002 = new Question0002();
+        ListNode l1 = question0002.stringToListNode("[7,2,4,3]");
+        ListNode l2 = question0002.stringToListNode("[5,6,4]");
+        ListNode ret = new Question0002().addTwoNumbers(l1, l2);
+        String out = listNodeToString(ret);
+        System.out.print(out);
+    }
+
     public static int[] stringToIntegerArray(String input) {
         input = input.trim();
         input = input.substring(1, input.length() - 1);
@@ -20,7 +39,7 @@ public class TwoLinkValueAdd {
         return output;
     }
 
-    public static ListNode stringToListNode(String input) {
+    public ListNode stringToListNode(String input) {
         // Generate array from the input
         int[] nodeValues = stringToIntegerArray(input);
 
@@ -47,15 +66,6 @@ public class TwoLinkValueAdd {
         return "[" + result.substring(0, result.length() - 2) + "]";
     }
 
-    public static void main(String[] args) throws IOException {
-        ListNode l1 = stringToListNode("[7,2,4,3]");
-        ListNode l2 = stringToListNode("[5,6,4]");
-        ListNode ret = new TwoLinkValueAdd().addTwoNumbers(l1, l2);
-
-        String out = listNodeToString(ret);
-
-        System.out.print(out);
-    }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if (l1 == null) {
@@ -88,13 +98,16 @@ public class TwoLinkValueAdd {
         }
         return header;
     }
-}
 
-class ListNode {
-    int val;
-    ListNode next;
+    class ListNode {
+        int val;
+        ListNode next;
 
-    ListNode(int x) {
-        val = x;
+        ListNode(int x) {
+            val = x;
+        }
     }
+
 }
+
+

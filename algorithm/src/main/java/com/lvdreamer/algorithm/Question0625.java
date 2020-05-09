@@ -9,7 +9,7 @@ import java.util.List;
  * <p>
  * 如果没有答案，或者答案超过了32位有符号整型的范围，返回0。
  */
-public class MinimumFactorization {
+public class Question0625 {
 
     public static void main(String[] args) {
 

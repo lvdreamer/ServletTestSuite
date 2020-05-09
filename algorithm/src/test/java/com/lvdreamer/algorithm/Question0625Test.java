@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MinimumFactorizationTest {
+public class Question0625Test {
     /**
      * 有一天，小Q发现了n个被上锁的宝箱和m串钥匙。第i个宝箱上写着一个整数a，第串钥匙上写着一个整数b。 小Q已经通过一些古籍得知了这些宝箱内有很多的珍贵的宝物。所以他想尽可能多地打开这些宝箱。
      * 当且仅当第i个宝箱上的数字ai;与第j串钥匙上的数字bj;之和为奇数的时候，这个宝箱才能被这串钥匙打开。每个宝箱只能被打开一次,且每一串钥匙也只能被使用一次。
