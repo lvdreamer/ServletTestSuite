@@ -15,7 +15,7 @@ import java.io.IOException;
 public class Question0004 {
 
     public static void main(String[] args) throws IOException {
-        //TODO
+        System.out.println(new Solution().findMedianSortedArrays(new int[]{1, 3}, new int[]{2}));
     }
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
