@@ -111,50 +111,6 @@ public class Question0625Test {
         }
     }
 
-    /**
-     * 最长回文子串
-     * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000
-     */
-    @Test
-    public void solution3() {
-        System.out.println(solution3("babad"));
-
-    }
-
-    private String solution3(String sourceStr) {
-        if (null == sourceStr || sourceStr.length() == 0) {
-            return "";
-        }
-        int strLegth = sourceStr.length();
-        int maxStart = 0;
-        int maxLen = 0;
-        for (int i = 0; i < strLegth; i++) {
-            int left = i - 1;
-            int rigth = i + 1;
-            int curLen = 1;
-            char middle = sourceStr.charAt(i);
-            while (left >= 0 && sourceStr.charAt(left) == middle) {
-                left--;
-                curLen++;
-            }
-            while (rigth < strLegth && sourceStr.charAt(rigth) == middle) {
-                rigth++;
-                curLen++;
-            }
-            while (left >= 0 && rigth < strLegth && sourceStr.charAt(left) == sourceStr.charAt(rigth)) {
-                left--;
-                rigth++;
-                curLen += 2;
-            }
-            if (curLen > maxLen) {
-                maxLen = curLen;
-                maxStart = left;
-            }
-        }
-        return sourceStr.substring(maxStart + 1, maxStart + maxLen + 1);
-
-
-    }
 
     @Test
     public void mySqrtTest() {
@@ -612,56 +568,7 @@ public class Question0625Test {
         return root.next;
     }
 
-    @Test
-    public void testReverse() {
-        System.out.println(reverse(1534236469));
-    }
 
-    public int reverse(int x) {
-        if (x == 0) {
-            return 0;
-        }
-        long result = 0;
-        while (x != 0) {
-            result = result * 10 + x % 10;
-            x /= 10;
-        }
-        return (int) result == result ? (int) result : 0;
-    }
-
-    public int myAtoi(String str) {
-        char[] chars = str.toCharArray();
-        int n = chars.length;
-        int index = 0;
-        while (index < n && chars[index] == ' ') {
-            index++;
-        }
-        if (index == n) {
-            return 0;
-        }
-        boolean sign = false;
-        if (chars[index] == '-') {
-            sign = true;
-            index++;
-        } else if (chars[index] == '+') {
-            index++;
-        } else if (!Character.isDigit(chars[index]))
-
-        {
-            return 0;
-        }
-
-        int result = 0;
-        while (index < n && Character.isDigit(chars[index])) {
-            int digit = chars[index] - '0';
-            if (result > (Integer.MAX_VALUE - digit) / 10) {
-                return sign ? Integer.MIN_VALUE : Integer.MAX_VALUE;
-            }
-            result = result * 10 + digit;
-            index++;
-        }
-        return sign ? -result : result;
-    }
 
     public int maxArea(int[] height) {
         int max = 0;
