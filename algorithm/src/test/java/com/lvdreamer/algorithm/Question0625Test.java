@@ -568,56 +568,7 @@ public class Question0625Test {
         return root.next;
     }
 
-    @Test
-    public void testReverse() {
-        System.out.println(reverse(1534236469));
-    }
 
-    public int reverse(int x) {
-        if (x == 0) {
-            return 0;
-        }
-        long result = 0;
-        while (x != 0) {
-            result = result * 10 + x % 10;
-            x /= 10;
-        }
-        return (int) result == result ? (int) result : 0;
-    }
-
-    public int myAtoi(String str) {
-        char[] chars = str.toCharArray();
-        int n = chars.length;
-        int index = 0;
-        while (index < n && chars[index] == ' ') {
-            index++;
-        }
-        if (index == n) {
-            return 0;
-        }
-        boolean sign = false;
-        if (chars[index] == '-') {
-            sign = true;
-            index++;
-        } else if (chars[index] == '+') {
-            index++;
-        } else if (!Character.isDigit(chars[index]))
-
-        {
-            return 0;
-        }
-
-        int result = 0;
-        while (index < n && Character.isDigit(chars[index])) {
-            int digit = chars[index] - '0';
-            if (result > (Integer.MAX_VALUE - digit) / 10) {
-                return sign ? Integer.MIN_VALUE : Integer.MAX_VALUE;
-            }
-            result = result * 10 + digit;
-            index++;
-        }
-        return sign ? -result : result;
-    }
 
     public int maxArea(int[] height) {
         int max = 0;
