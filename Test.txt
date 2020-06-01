@@ -20,3 +20,4 @@ curl -H 'content-type: application/json' -X POST -d '{"name":"bob"}'
 curl -F "file=@/root/soft/apache-tomcat-8.0.41.tar.gz" http://172.29.14.4:8085/ServletTestSuite/fileUpload
 
 #20200527 偷个懒
+#20200601 感冒嗓子疼，偷懒
