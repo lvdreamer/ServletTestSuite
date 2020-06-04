@@ -569,36 +569,6 @@ public class Question0625Test {
     }
 
 
-
-    public int maxArea(int[] height) {
-        int max = 0;
-        int left = 0;
-        int right = height.length - 1;
-        while (left < right) {
-            max = Math.max(max, (right - left) * Math.min(height[left], height[right]));
-            if (height[left] < height[right]) {
-                left++;
-            } else {
-                right--;
-            }
-        }
-        return max;
-    }
-
-    public String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0) return "";
-        String prefixStr = strs[0];
-        for (String str : strs) {
-            while (!str.startsWith(prefixStr)) {
-                if (prefixStr.length() == 1) {
-                    return "";
-                }
-                prefixStr = prefixStr.substring(0, prefixStr.length() - 1);
-            }
-        }
-        return prefixStr;
-    }
-
     public boolean isValid(String s) {
         char[] charArr = s.toCharArray();
         Stack<Character> stack = new Stack<>();
