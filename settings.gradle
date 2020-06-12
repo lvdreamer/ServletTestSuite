@@ -8,4 +8,5 @@ include 'netty'
 include 'algorithm'
 include 'docker'
 include 'design-pattern'
+include 'pdf-parser'
 
