@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+group 'com.lvdreamer'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-batch', version: '2.1.1.RELEASE'
+}
