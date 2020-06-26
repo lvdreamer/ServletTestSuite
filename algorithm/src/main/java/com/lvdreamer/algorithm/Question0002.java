@@ -99,15 +99,6 @@ public class Question0002 {
         return header;
     }
 
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
-
 }
 
 
