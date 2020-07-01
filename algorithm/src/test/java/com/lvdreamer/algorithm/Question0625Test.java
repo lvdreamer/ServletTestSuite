@@ -588,27 +588,6 @@ public class Question0625Test {
         return stack.isEmpty();
     }
 
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        int visit[] = new int[nums.length];
-        permute(nums, result, new ArrayList<Integer>(), visit);
-        return result;
-    }
-
-    public void permute(int[] nums, List<List<Integer>> result, ArrayList<Integer> tmpArray, int visit[]) {
-        if (tmpArray.size() == nums.length) {
-            result.add(new ArrayList<>(tmpArray));
-        }
-        for (int i = 0; i < nums.length; i++) {
-            if (visit[i] == 1) continue;
-            visit[i] = 1;
-            tmpArray.add(nums[i]);
-            permute(nums, result, tmpArray, visit);
-            visit[i] = 0;
-            tmpArray.remove(tmpArray.size() - 1);
-        }
-    }
-
     public List<Integer> spiralOrder(int[][] matrix) {
         List ans = new ArrayList();
         if (matrix.length == 0)
