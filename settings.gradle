@@ -11,4 +11,5 @@ include 'design-pattern'
 include 'pdf-parser'
 include 'spring-batch'
 include 'kafka'
+include 'camel'
 
