@@ -25,7 +25,7 @@ public class FileProcess implements Processor {
         File body = inFileMessage.getGenericFile().getFile();
         logger.info(String.valueOf(body instanceof File));
         if (exchange.getIn().getHeader(Exchange.FILE_NAME).equals("multi_1_2b47fef37d75408ba5292da8f3f3bc3e-宽表测试数据.txt")) {
-            throw new RuntimeException("异常文件");
+            throw new FileProcessException("异常文件");
         }
     }
 
