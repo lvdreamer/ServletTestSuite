@@ -17,4 +17,5 @@ dependencies {
     implementation('org.apache.camel:camel-spring-boot-starter:2.25.1')
     implementation('org.apache.camel:camel-core:2.25.1')
     implementation('org.apache.camel:camel-ftp:2.25.1')
+    compile 'cn.hutool:hutool-all:5.1.5'
 }
