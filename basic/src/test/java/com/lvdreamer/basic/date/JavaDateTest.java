@@ -17,6 +17,7 @@ public class JavaDateTest {
     public void dayOfWeekTest() {
         System.out.println(LocalDate.now().getDayOfWeek().getValue());
         LocalDate today = LocalDate.now();
+        System.out.println(today.toString());
         //本月的最后一天
         LocalDate lastDay = today.with(TemporalAdjusters.lastDayOfMonth());
         System.out.println(today);
