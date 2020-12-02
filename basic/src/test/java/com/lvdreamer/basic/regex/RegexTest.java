@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 import org.junit.Test;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
@@ -239,4 +240,25 @@ public class RegexTest {
         columnNumList = columnNumList.stream().map(Math::abs).collect(Collectors.toList());
         System.out.println(columnNumList);
     }
+
+    @Test
+    public void testUit() {
+        String a = "近三月消费-本月消费（元）" + (char) 1 + "END";
+        System.out.println(a.split(String.valueOf((char) 1))[1]);
+    }
+
+    @Test
+    public void readAndWrite() throws IOException {
+        String filecontent_separator = new String(new byte[]{0x01});
+        InputStreamReader isr = new InputStreamReader(new FileInputStream("D:\\02-company\\05-亚信科技\\02-广州DNA\\temp\\a_dnatable_column_define_type_20201120110816.data"), "UTF-8");
+        try (BufferedReader br = new BufferedReader(isr)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+               // String[] data = StringUtils.split(line,filecontent_separator);
+                String[] data = line.split(filecontent_separator, -1);
+                System.out.println(Arrays.toString(data));
+            }
+        }
+    }
+
 }
