@@ -13,4 +13,9 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.apache.camel:camel-spring-boot-starter:2.25.1')
+    implementation('org.apache.camel:camel-core:2.25.1')
+    implementation('org.apache.camel:camel-kafka:2.25.1')
+
 }

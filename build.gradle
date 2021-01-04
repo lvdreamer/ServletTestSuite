@@ -17,8 +17,8 @@ sourceCompatibility = 1.8
 allprojects  {
     apply plugin: 'idea'
     apply plugin: 'java'
-    apply plugin:'org.springframework.boot'
-    apply plugin:'io.spring.dependency-management'
+   apply plugin:'org.springframework.boot'
+   apply plugin:'io.spring.dependency-management'
 
     repositories {
         maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'}
