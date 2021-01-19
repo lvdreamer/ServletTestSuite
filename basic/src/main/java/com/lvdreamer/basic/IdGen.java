@@ -2,8 +2,8 @@ package com.lvdreamer.basic;
 
 public class IdGen {
     private final long twepoch = 1288834974657L;
-    private final long sequenceMask = -1L ^ (-1L << 4L);
-    private final long timestampLeftShift = 4;
+    private final long sequenceMask = -1L ^ (-1L << 12L);
+    private final long timestampLeftShift = 12;
     private long lastTimestamp = -1L;
     private long sequence = 0L;
     public synchronized long nextId() {
@@ -25,7 +25,7 @@ public class IdGen {
         System.out.println(Long.toBinaryString((-1L ^ (-1L << 4L))));
         System.out.println((System.currentTimeMillis()-1288834974657L)*16);
         IdGen idGen=new IdGen();
-        for(int i=0;i<10;i++){
+        for(int i=0;i<1000;i++){
             System.out.println(idGen.nextId());
         }
     }
