@@ -26,7 +26,7 @@ public class JsonTreeUtil {
                 JsonObject n = list.get(i).getAsJsonObject();
                 for (int j = 0; j < list.size(); j++) {
                     JsonObject m = list.get(j).getAsJsonObject();
-                    if (n.get(up_key).getAsString().equals(m.get(key).getAsString())) {
+                    if (n.get(up_key) != null && n.get(up_key).getAsString().equals(m.get(key).getAsString())) {
                         mark = true;
                         break;
                     }
@@ -41,13 +41,13 @@ public class JsonTreeUtil {
         //为根节点寻找下级
         for (int i = 0; i < nodeList.size(); i++) {
             JsonObject n = nodeList.get(i).getAsJsonObject();
-            JsonArray child = (JsonArray)n.get(childName);
+            JsonArray child = (JsonArray) n.get(childName);
             if (child == null) {
                 child = new JsonArray();
             }
             for (int j = 0; j < list.size(); j++) {
                 JsonObject m = list.get(j).getAsJsonObject();
-                if (n.get(key).getAsString().equals(m.get(up_key).getAsString())) {
+                if (m.get(up_key) != null && n.get(key).getAsString().equals(m.get(up_key).getAsString())) {
                     m.addProperty("child_level", child_level + 1);
                     child.add(m);
                 }
