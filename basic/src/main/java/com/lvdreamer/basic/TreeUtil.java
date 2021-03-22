@@ -3,10 +3,7 @@ package com.lvdreamer.basic;
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class TreeUtil {
     /**
@@ -56,6 +53,19 @@ public class TreeUtil {
         }
     }
 
+    public static List<TreeNode> deepSort(List<TreeNode> list) {
+        if (null == list || list.isEmpty()) {
+            return list;
+        }
+        list.sort(Comparator.comparing(TreeNode::getId).reversed());
+        for (TreeNode node : list) {
+            if (null == node) {
+                continue;
+            }
+            deepSort(node.getChildrenNodes());
+        }
+        return list;
+    }
 
     static class TreeNode {
         private String id;
@@ -127,6 +137,14 @@ public class TreeUtil {
         treeNode.setName("1-2-1");
         treeNode.setParentId("1-2");
         treeNodes.add(treeNode);
-        System.out.println(new Gson().toJson(TreeUtil.getChildTreeNodes(treeNodes, "1")));
+        treeNode = new TreeNode();
+        treeNode.setId("1-2-2");
+        treeNode.setName("1-2-2");
+        treeNode.setParentId("1-2");
+        treeNodes.add(treeNode);
+        List<TreeNode> treeRes = TreeUtil.getChildTreeNodes(treeNodes, "1");
+        System.out.println(new Gson().toJson(treeRes));
+        TreeUtil.deepSort(treeRes);
+        System.out.println(new Gson().toJson(treeRes));
     }
 }
