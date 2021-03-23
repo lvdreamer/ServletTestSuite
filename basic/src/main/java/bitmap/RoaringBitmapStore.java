@@ -47,7 +47,42 @@ public class RoaringBitmapStore {
             }
         }).start();
         int i = 1;
-        int j = 1000000;
+        int j = 10000;
+        while (i++ < j || ((j = 10000 - roaringBitmap.getIntCardinality()) > 0)) {
+            roaringBitmap.add(Long.parseLong(getTel()));
+            if (i > j) {
+                i = 1;
+            }
+        }
+        logger.info("1w bitMap空间占用:{},大小：{}", RamUsageEstimator.humanSizeOf(roaringBitmap), roaringBitmap.getIntCardinality());
+        while (i++ < j || ((j = 50000 - roaringBitmap.getIntCardinality()) > 0)) {
+            roaringBitmap.add(Long.parseLong(getTel()));
+            if (i > j) {
+                i = 1;
+            }
+        }
+        logger.info("5w bitMap空间占用:{},大小：{}", RamUsageEstimator.humanSizeOf(roaringBitmap), roaringBitmap.getIntCardinality());
+        while (i++ < j || ((j = 100000 - roaringBitmap.getIntCardinality()) > 0)) {
+            roaringBitmap.add(Long.parseLong(getTel()));
+            if (i > j) {
+                i = 1;
+            }
+        }
+        logger.info("10w bitMap空间占用:{},大小：{}", RamUsageEstimator.humanSizeOf(roaringBitmap), roaringBitmap.getIntCardinality());
+        while (i++ < j || ((j = 200000 - roaringBitmap.getIntCardinality()) > 0)) {
+            roaringBitmap.add(Long.parseLong(getTel()));
+            if (i > j) {
+                i = 1;
+            }
+        }
+        logger.info("20w bitMap空间占用:{},大小：{}", RamUsageEstimator.humanSizeOf(roaringBitmap), roaringBitmap.getIntCardinality());
+        while (i++ < j || ((j = 500000 - roaringBitmap.getIntCardinality()) > 0)) {
+            roaringBitmap.add(Long.parseLong(getTel()));
+            if (i > j) {
+                i = 1;
+            }
+        }
+        logger.info("50w bitMap空间占用:{},大小：{}", RamUsageEstimator.humanSizeOf(roaringBitmap), roaringBitmap.getIntCardinality());
         while (i++ < j || ((j = 1000000 - roaringBitmap.getIntCardinality()) > 0)) {
             roaringBitmap.add(Long.parseLong(getTel()));
             if (i > j) {
@@ -55,6 +90,13 @@ public class RoaringBitmapStore {
             }
         }
         logger.info("100w bitMap空间占用:{},大小：{}", RamUsageEstimator.humanSizeOf(roaringBitmap), roaringBitmap.getIntCardinality());
+        while (i++ < j || ((j = 2000000 - roaringBitmap.getIntCardinality()) > 0)) {
+            roaringBitmap.add(Long.parseLong(getTel()));
+            if (i > j) {
+                i = 1;
+            }
+        }
+        logger.info("200w bitMap空间占用:{},大小：{}", RamUsageEstimator.humanSizeOf(roaringBitmap), roaringBitmap.getIntCardinality());
         while (i++ < j || ((j = 5000000 - roaringBitmap.getIntCardinality()) > 0)) {
             roaringBitmap.add(Long.parseLong(getTel()));
             if (i > j) {
@@ -101,14 +143,14 @@ public class RoaringBitmapStore {
     }
 }
 /**
- [SUB-INFO PRINT]2021-02-22 20:43:07.572 [Thread-0] INFO  com.lvdreamer.basic.LogbackPrint - 定时输出bitMap大小：0,空间占用:344.1 KB
- [SUB-INFO PRINT]2021-02-22 20:43:07.975 [main] INFO  com.lvdreamer.basic.LogbackPrint - 100w bitMap空间占用:2.7 MB,大小：1000000
- [SUB-INFO PRINT]2021-02-22 20:43:10.269 [main] INFO  com.lvdreamer.basic.LogbackPrint - 500w bitMap空间占用:10.2 MB,大小：5000000
- [SUB-INFO PRINT]2021-02-22 20:43:13.095 [main] INFO  com.lvdreamer.basic.LogbackPrint - 1000w bitMap空间占用:15.6 MB,大小：10000000
- [SUB-INFO PRINT]2021-02-22 20:43:16.464 [main] INFO  com.lvdreamer.basic.LogbackPrint - 2000w bitMap空间占用:15.6 MB,大小：20000000
- [SUB-INFO PRINT]2021-02-22 20:43:28.737 [main] INFO  com.lvdreamer.basic.LogbackPrint - 5000w bitMap空间占用:15.7 MB,大小：50000000
- [SUB-INFO PRINT]2021-02-22 20:43:37.577 [Thread-0] INFO  com.lvdreamer.basic.LogbackPrint - 定时输出bitMap大小：66258879,空间占用:15.7 MB
- [SUB-INFO PRINT]2021-02-22 20:44:07.578 [Thread-0] INFO  com.lvdreamer.basic.LogbackPrint - 定时输出bitMap大小：100417007,空间占用:15.7 MB
- [SUB-INFO PRINT]2021-02-22 20:44:37.579 [Thread-0] INFO  com.lvdreamer.basic.LogbackPrint - 定时输出bitMap大小：116349924,空间占用:15.7 MB
- [SUB-INFO PRINT]2021-02-22 20:45:07.579 [Thread-0] INFO  com.lvdreamer.basic.LogbackPrint - 定时输出bitMap大小：123616886,空间占用:15.7 MB
+ * [SUB-INFO PRINT]2021-02-22 20:43:07.572 [Thread-0] INFO  com.lvdreamer.basic.LogbackPrint - 定时输出bitMap大小：0,空间占用:344.1 KB
+ * [SUB-INFO PRINT]2021-02-22 20:43:07.975 [main] INFO  com.lvdreamer.basic.LogbackPrint - 100w bitMap空间占用:2.7 MB,大小：1000000
+ * [SUB-INFO PRINT]2021-02-22 20:43:10.269 [main] INFO  com.lvdreamer.basic.LogbackPrint - 500w bitMap空间占用:10.2 MB,大小：5000000
+ * [SUB-INFO PRINT]2021-02-22 20:43:13.095 [main] INFO  com.lvdreamer.basic.LogbackPrint - 1000w bitMap空间占用:15.6 MB,大小：10000000
+ * [SUB-INFO PRINT]2021-02-22 20:43:16.464 [main] INFO  com.lvdreamer.basic.LogbackPrint - 2000w bitMap空间占用:15.6 MB,大小：20000000
+ * [SUB-INFO PRINT]2021-02-22 20:43:28.737 [main] INFO  com.lvdreamer.basic.LogbackPrint - 5000w bitMap空间占用:15.7 MB,大小：50000000
+ * [SUB-INFO PRINT]2021-02-22 20:43:37.577 [Thread-0] INFO  com.lvdreamer.basic.LogbackPrint - 定时输出bitMap大小：66258879,空间占用:15.7 MB
+ * [SUB-INFO PRINT]2021-02-22 20:44:07.578 [Thread-0] INFO  com.lvdreamer.basic.LogbackPrint - 定时输出bitMap大小：100417007,空间占用:15.7 MB
+ * [SUB-INFO PRINT]2021-02-22 20:44:37.579 [Thread-0] INFO  com.lvdreamer.basic.LogbackPrint - 定时输出bitMap大小：116349924,空间占用:15.7 MB
+ * [SUB-INFO PRINT]2021-02-22 20:45:07.579 [Thread-0] INFO  com.lvdreamer.basic.LogbackPrint - 定时输出bitMap大小：123616886,空间占用:15.7 MB
  **/
