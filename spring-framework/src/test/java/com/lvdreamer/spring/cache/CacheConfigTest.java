@@ -6,12 +6,27 @@ import com.github.benmanes.caffeine.cache.Caffeine;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.concurrent.TimeUnit;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class CacheConfigTest {
-
+    @Autowired
+    private DataService dataService;
     private int index = 1;
+
+    @Test
+    public void testLoadData() {
+        System.out.println(dataService.queryData("aaa"));
+        System.out.println(dataService.queryData("aaa"));
+        System.out.println(dataService.queryData("aaa"));
+
+    }
 
     /**
      * 模拟从数据库中读取数据
