@@ -13,8 +13,7 @@ public class ExcelReaderTest {
     @Test
     public void read() throws IOException {
         // 设定Excel文件所在路径
-        String excelFileName = "D:\\02-company\\05-亚信科技\\01-新疆DNA\\01-需求\\标签定义\\在线公司基础标签定义20201009(2)(1).xlsx";
-
+        String excelFileName = "Dtemp.xlsx";
         new ExcelGenerateLabel().read(excelFileName);
     }
 
