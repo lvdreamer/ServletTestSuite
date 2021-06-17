@@ -13,4 +13,5 @@ include 'spring-batch'
 include 'kafka'
 include 'camel'
 include 'spring-framework'
+include 'postgresql'
 
