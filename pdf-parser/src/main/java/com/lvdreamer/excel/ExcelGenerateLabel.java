@@ -2,6 +2,7 @@ package com.lvdreamer.excel;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Sets;
 import org.apache.commons.lang3.StringUtils;
 import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;
@@ -14,10 +15,7 @@ import java.io.OutputStreamWriter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +23,23 @@ import java.util.regex.Pattern;
 public class ExcelGenerateLabel {
     private static Pattern humpPattern = Pattern.compile("[A-Z]");
     private static Pattern linePattern = Pattern.compile("_(\\w)");
+
+
+    /**
+     * 流量标签 数值需换算
+     */
+    public static Set<Integer> fluxColumnNumSet;
+    /**
+     * 金额标签 数据需换算
+     */
+    public static Set<Integer> moneyColumnSet;
+
+    static {
+        fluxColumnNumSet = Sets.newHashSet(212);
+        //fluxColumnNumSet= Sets.newHashSet(1137, 1138);
+        moneyColumnSet = Sets.newHashSet();
+        //moneyColumnSet = Sets.newHashSet(1130);
+    }
 
     public void read(String excelFilePath) throws IOException {
         // 设定Excel文件所在路径
@@ -101,7 +116,8 @@ public class ExcelGenerateLabel {
         writeDefineType(defineTypeMap);
         writeDefineColumn(columnDefineMap);
         writeColumnValue(columnValueMap);
-
+        InsertSqlPrinter.printLabelDefineInsertSql(new ArrayList<>(columnDefineMap.values()));
+        InsertSqlPrinter.printLabelValueInsertSql(columnValueMap);
         return;
     }
 
@@ -233,14 +249,10 @@ public class ExcelGenerateLabel {
              */
 
             long convertRadio = 1;
-            switch (columnDefine.getColumnNum()) {
-                case 1137:
-                case 1138:
-                    convertRadio = 1024 * 1024;
-                    break;
-                case 1130:
-                    convertRadio = 1000;
-                    break;
+            if (fluxColumnNumSet.contains(columnDefine.getColumnNum())) {
+                convertRadio = 1024 * 1024;
+            } else if (moneyColumnSet.contains(columnDefine.getColumnNum())) {
+                convertRadio = 1000;
             }
             for (int i = 0; i < charArr.length; ) {
                 char c = charArr[i];
@@ -329,8 +341,12 @@ public class ExcelGenerateLabel {
                 LabelValueMap lastValue = currValueMap.get(size - 1);
                 LabelValueMap last2Value = currValueMap.get(size - 2);
                 if (null == lastValue.getNumVal2()) {
-                    char last2con = last2Value.getConditions().charAt(1);
-                    if (last2Value.getNumVal2().compareTo(last2Value.getNumVal1()) > 0) {
+                    //局
+                    char last2con = '=';
+                    if (last2Value.getConditions().length() == 2) {
+                        last2con = last2Value.getConditions().charAt(1);
+                    }
+                    if (lastValue.getNumVal1().compareTo(last2Value.getNumVal1()) > 0) {
                         lastValue.setConditions(last2con == ']' ? ">" : ">=");
                     } else {
                         lastValue.setConditions(last2con == ']' ? "<" : "<=");
