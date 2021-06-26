@@ -11,7 +11,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class StringTest {
-
+    /**
+     * 字符串超过显示最大长度用...替换
+     */
     @Test
     public void cutString() {
         System.out.println(StringUtils.abbreviate(null, 4));
@@ -22,37 +24,36 @@ public class StringTest {
         System.out.println(StringUtils.abbreviate("abcdefgaaaaaaaaaaaaaaaaaaaaaaaaa", 20));
     }
 
+    /**
+     * 文件名截取特定字段
+     */
     @Test
-    public void t1() {
+    public void fileNameCutField() {
         String fileNmae = "NG3Code_SZ_20201013_0002_DNA204_N_0_3.csv";
         System.out.println(fileNmae.substring(8, 10));
         System.out.println(fileNmae.substring(11, 17));
 
     }
 
+    /**
+     * 号码隐藏
+     */
     @Test
-    public void mask() {
-        System.out.println("adminadminadmin".replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2"));
-        LocalDate dataPeriod = LocalDate.now();
-        Date startOfDay = Date.from(dataPeriod.atStartOfDay().atZone(ZoneOffset.of("+8")).toInstant());
-        Date endOfDay = Date.from(dataPeriod.plusDays(1).atStartOfDay().atZone(ZoneOffset.of("+8")).toInstant());
-        System.out.println(startOfDay);
-        System.out.println(endOfDay);
+    public void phoneMask() {
+        System.out.println("13700020001".replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2"));
         System.out.println(StringUtils.joinWith(",", "a", null, "", "bcd"));
-        System.out.println(LocalDate.now().minusDays(1));
     }
 
+    /**
+     * 字符串拼接
+     */
     @Test
     public void testJoin() {
         System.out.println(Joiner.on("|").join(Arrays.asList("a", "b", "c")));
+        System.out.println(StringUtils.joinWith("|", "a", null, "", "bcd"));
+
     }
 
-    @Test
-    public void test8() {
-        System.out.println(System.currentTimeMillis());
-        System.out.println(System.currentTimeMillis() / 1000);
-        System.out.println(new Date().getTime() / 1000);
-    }
 
     @Test
     public void jsonf() {
@@ -73,10 +74,13 @@ public class StringTest {
         System.out.println(data);
     }
 
+    /**
+     * 获取最新时间的文件
+     */
     @Test
     public void fileNameSortAndGetFirseTest() {
-        List<String> fileList = Arrays.asList("fname_20210603.avl", "fname_20210602.avl");
-        String lastFileName = fileList.stream().filter(f -> f.toLowerCase().contains("fname_".toLowerCase()) && (f.toLowerCase().endsWith(".avl"))).max(Comparator.naturalOrder()).orElse(null);
+        List<String> fileList = Arrays.asList("fname_20210603.avl", "fname_20210602.avl","FNAME_20210608.avl");
+        String lastFileName = fileList.stream().filter(f -> f.toLowerCase().contains("fname_".toLowerCase()) && (f.toLowerCase().endsWith(".avl"))).max(Comparator.comparing(String::toUpperCase)).orElse(null);
         System.out.println(lastFileName);
     }
 }
