@@ -7,10 +7,11 @@ import org.junit.Test;
 public class JsonTest {
 
     @Test
-    public void ex(){
-        String response="{}";
+    public void nullJson() {
+        String response = "{}";
         Math respResult = new Gson().fromJson(response, new TypeToken<Math>() {
         }.getType());
         System.out.println(respResult);
     }
+
 }
