@@ -1,5 +1,6 @@
 package com.lvdreamer.basic.date;
 
+import java.text.DecimalFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -92,6 +93,7 @@ public class DateOperator {
         Date date11 = new Date();
         LocalDate localDate11 = date11.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         System.out.println(localDate11);
+        LocalDateTime localDateTime2=date11.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         //LocalDate 转 Date
         LocalDateTime localDateTime22 = LocalDateTime.now();
         ZoneId zoneId = ZoneId.systemDefault();
@@ -99,5 +101,14 @@ public class DateOperator {
         Date dateType = Date.from(zdt.toInstant());
         System.out.println("LocalDateTime = " + localDateTime22);
         System.out.println("Date = " + dateType);
+
+         localDateTime1 = LocalDateTime.now();
+         dateToStrFormatter = DateTimeFormatter.ofPattern("yyMMddHH");
+         dateStr = dateToStrFormatter.format(localDateTime1);
+        System.out.println(Long.parseLong(dateStr));
+        System.out.println(dateStr+new DecimalFormat("000000").format(99).substring(0,6));
+        System.out.println(dateStr+new DecimalFormat("000000").format(999999999999L).substring(0,6));
+        System.out.println(new Date().getTime()/1000L);
+
     }
 }
