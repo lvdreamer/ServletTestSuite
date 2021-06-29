@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'com.lvdreamer'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.apache.camel:camel-spring-boot-starter:2.25.1')
+    implementation('org.apache.camel:camel-core:2.25.1')
+    implementation('org.apache.camel:camel-ftp:2.25.1')
+    compile 'cn.hutool:hutool-all:5.1.5'
+}

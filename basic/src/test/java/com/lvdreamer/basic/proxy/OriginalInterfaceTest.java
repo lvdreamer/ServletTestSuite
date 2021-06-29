@@ -3,10 +3,7 @@ package com.lvdreamer.basic.proxy;
 import org.junit.Test;
 
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-
-import static org.junit.Assert.*;
 
 public class OriginalInterfaceTest {
 
@@ -26,4 +23,8 @@ public class OriginalInterfaceTest {
         OriginalInterface proxyInstance2 = (OriginalInterface) Proxy.newProxyInstance(originalProxy.getClass().getClassLoader(), originalInterface.getClass().getInterfaces(), invocationHandler);
         proxyInstance2.sayHello();
     }
+
+
+
+
 }
